@@ -1,9 +1,10 @@
+
+
 public class DSAStack {
 
     private Object[] stack;
     private int count;
     private int DEFAULT_CAPACITY = 100;
-    private int capacity;
 
     // default constructor
     public DSAStack() {
@@ -12,28 +13,23 @@ public class DSAStack {
     }
 
     // alternate constructor
-    public DSAStack(int capacity) {
-        stack = new Object[capacity];
+    public DSAStack(int maxCapacity) {
+        stack = new Object[maxCapacity];
         count = 0;
     }
 
     // accessors
     public int getCount() {
-        return capacity;
+        return count;
     }
 
     public boolean isEmpty() {
-        if (count == 0)
-            return true;
-        else
-            return false;
+        return count == 0;
     }
 
     public boolean isFull() {
-        if (count == capacity)
-            return true;
-        else
-            return false;
+        return count == stack.length;
+
     }
 
     // mutators
@@ -46,16 +42,17 @@ public class DSAStack {
         }
     }
 
-    public void pop(Object topValue) {
-        top(topValue);
+    public Object pop() {
+        Object topValue = top();
         count--;
+        return topValue;
     }
 
-    public void top(Object topValue) {
+    public Object top() {
         if (isEmpty())
             throw new IllegalStateException("Stack is empty");
         else
-            topValue = stack[count - 1];
+            return stack[count - 1];
 
     }
 }
