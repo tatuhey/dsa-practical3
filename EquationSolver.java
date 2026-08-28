@@ -8,6 +8,6 @@ DATESTART: 28/08/2026
 
 import java.util.*;
 
-public class practical3{
+public class EquationSolver{
 
 }
