@@ -44,6 +44,14 @@ public abstract class DSAQueue {
 
 class ShuffleQueue extends DSAQueue {
 
+    public ShuffleQueue() {
+        super(); // calling constructor in superclass
+    }
+
+    public ShuffleQueue(int maxCapacity){
+        super(maxCapacity);
+    }
+
     // https://stackoverflow.com/questions/18141596/which-exception-to-throw-when-user-tries-to-add-to-a-full-container
     @Override
     public void enqueue(Object value) {
@@ -76,23 +84,46 @@ class ShuffleQueue extends DSAQueue {
 
 class CircularQueue extends DSAQueue {
 
+    // www.geeksforgeeks.org/java/implement-a-circular-queue-in-java/
+    private int front, rear;
+
+    public CircularQueue() {
+        super();
+        front = 0;
+        rear = 0;
+    }
+
+    public CircularQueue(int maxCapacity) {
+        super(maxCapacity);
+        front = 0;
+        rear = 0;
+    }
+
     @Override
     public void enqueue(Object value) {
-
+        if (isFull())
+            throw new IllegalStateException("Queue is full");
+        else {
+            queue[rear] = value;
+            rear = (rear + 1) % queue.length;
+            count++;
+        }
 
     }
 
     @Override
     public Object dequeue(Object value) {
-
-        Object val = 1;
-        return val;
-
+        Object frontVal = peek();
+        front = (front + 1) % queue.length;
+        count--;
+        return frontVal;
     }
 
+    @Override
     public Object peek() {
-
-        Object val = 1;
-        return val;
+        if (isEmpty())
+            throw new IllegalStateException("Queue is empty");
+        else
+            return queue[front];
     }
 }
