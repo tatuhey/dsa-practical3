@@ -42,7 +42,7 @@ public abstract class DSAQueue {
 }
 
 
-class shuffleQueue extends DSAQueue {
+class ShuffleQueue extends DSAQueue {
 
     // https://stackoverflow.com/questions/18141596/which-exception-to-throw-when-user-tries-to-add-to-a-full-container
     @Override
@@ -71,5 +71,28 @@ class shuffleQueue extends DSAQueue {
             throw new IllegalStateException("Queue is empty");
         else
             return queue[0];
+    }
+}
+
+class CircularQueue extends DSAQueue {
+
+    @Override
+    public void enqueue(Object value) {
+
+
+    }
+
+    @Override
+    public Object dequeue(Object value) {
+
+        Object val = 1;
+        return val;
+
+    }
+
+    public Object peek() {
+
+        Object val = 1;
+        return val;
     }
 }
