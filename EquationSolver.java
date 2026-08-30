@@ -15,12 +15,27 @@ public class EquationSolver {
     }
 
     public double solve(String equation) {
-        parseInfixToPostfix();
+        parseInfixToPostfix(equation);
         evaluatePostfix();
     }
 
     private DSAQueue parseInfixToPostfix(String equation) {
+        
+    }
 
+    private double evaluatePostfix(DSAQueue postfixQueue) {
+        double result = 0;
+        return result;
+    }
+
+    private int presedenceOf(char theOp) {
+        int result = 0;
+        return result;
+    }
+
+    private double executeOperation(char op, double op1, double op2) {
+        double result = 0;
+        return result;
     }
     
 }
