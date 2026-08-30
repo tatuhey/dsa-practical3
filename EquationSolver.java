@@ -11,16 +11,30 @@ import java.util.*;
 public class EquationSolver {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String term;
+        System.out.println("Insert the equation below.");
+        term = sc.nextLine();
 
+        solve(term);
+
+        sc.close();
     }
 
-    public double solve(String equation) {
+    public static double solve(String equation) {
+        double result = 0;
+
         parseInfixToPostfix(equation);
         evaluatePostfix();
+
+        return result;
     }
 
     private DSAQueue parseInfixToPostfix(String equation) {
-        
+        DSAStack stackOp = new DSAStack();
+        CircularQueue cirQPostfix = new CircularQueue();
+
+        while()
     }
 
     private double evaluatePostfix(DSAQueue postfixQueue) {
