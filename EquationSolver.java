@@ -77,10 +77,7 @@ public class EquationSolver {
         DSAStack evalStack = new DSAStack();
         int index = postfixQueue.count;
 
-        for (int i = 0; i <= index; i++){
-            
-        }
-
+        
         double result = 0;
         return result;
     }
