@@ -27,6 +27,7 @@ public class EquationSolver {
         DSAQueue postfix = parseInfixToPostfix(equation);
         result = evaluatePostfix(postfix);
 
+        System.out.println(postfix);
         return result;
     }
 
@@ -46,10 +47,19 @@ public class EquationSolver {
                 }
                 stackOp.pop();
             } else if (term[index].equals('+') || term[index].equals('-') || term[index].equals('*') || term[index].equals('/')) {
-                while(!stackOp.isEmpty() && !stackOp.top().equals('(') && (presedenceOf(stackOp.top().toString()) >= presedenceOf(term))) {
-
+                char c1 = (char) stackOp.top();
+                char c2 = (char) stackOp.pop();
+                while(!stackOp.isEmpty() && !stackOp.top().equals('(') && (presedenceOf(c1) >= presedenceOf(c2))) {
+                    cirQPostfix.enqueue(stackOp.pop());
                 }
+                stackOp.push(term);
+            } else {
+                cirQPostfix.enqueue(term);
             }
+            index++;
+        }
+        while(!stackOp.isEmpty()) {
+            cirQPostfix.enqueue(stackOp.pop());
         }
 
         return cirQPostfix;
@@ -64,6 +74,13 @@ public class EquationSolver {
     }
 
     private static double evaluatePostfix(DSAQueue postfixQueue) {
+        DSAStack evalStack = new DSAStack();
+        int index = postfixQueue.count;
+
+        for (int i = 0; i <= index; i++){
+            
+        }
+
         double result = 0;
         return result;
     }
