@@ -49,20 +49,14 @@ public class EquationSolver {
                     cirQPostfix.enqueue(stackOp.top());
                 }
                 stackOp.pop();
-            } else if (term.equals('+')
-                    || term.equals('-')
-                    || term.equals('*')
-                    || term.equals('/')) {
-                char c1 = (char) stackOp.top();
-                char c2 = (char) stackOp.pop();
-                while(!stackOp.isEmpty()
-                    && !stackOp.top().equals('(')
-                    && (presedenceOf(c1) >= presedenceOf(c2))) {
+            } else if (term.equals('+') || term.equals('-') || term.equals('*') || term.equals('/')) {
+                char currentOp = term.charAt(0);
+                while(!stackOp.isEmpty() && !stackOp.top().equals('(') && (presedenceOf(((String) stackOp.top()).charAt(0)) >= presedenceOf(currentOp))) {
                     cirQPostfix.enqueue(stackOp.pop());
                 }
                 stackOp.push(term);
             } else {
-                cirQPostfix.enqueue(term);
+                cirQPostfix.enqueue(Double.parseDouble(term));
             }
             index++;
         }
@@ -83,11 +77,24 @@ public class EquationSolver {
 
     private static double evaluatePostfix(DSAQueue postfixQueue) {
         DSAStack evalStack = new DSAStack();
-        int index = postfixQueue.count;
 
-        
-        double result = 0;
-        return result;
+        while(!postfixQueue.isEmpty()) {
+            Object term = postfixQueue.dequeue();
+            
+            if (term instanceof Double) {
+                evalStack.push(term);
+            } else {
+                char op = ((String) term).charAt(0);
+                double op2 = (Double) evalStack.pop();
+                double op1 = (Double) evalStack.pop();
+
+                double result = executeOperation(op, op1, op2);
+                
+                evalStack.push(result);
+             }
+        }
+
+        return (Double) evalStack.pop();
     }
 
     // https://www.geeksforgeeks.org/java/java-program-to-convert-infix-expression-to-postfix-expression/
@@ -105,8 +112,18 @@ public class EquationSolver {
     }
 
     private static double executeOperation(char op, double op1, double op2) {
-        double result = 0;
-        return result;
+        switch(op) {
+            case '+':
+                return op1 + op2;
+            case '-':
+                return op1 - op2;
+            case '*':
+                return op1 * op2;
+            case '/':
+                return op1 / op2;
+            default:
+                throw new IllegalArgumentException("Unknown operator: " + op);
+        }
     }
     
 }
