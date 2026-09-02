@@ -112,7 +112,7 @@ class CircularQueue extends DSAQueue {
     }
 
     @Override
-    public Object dequeue(Object value) {
+    public Object dequeue() {
         Object frontVal = peek();
         front = (front + 1) % queue.length;
         count--;
