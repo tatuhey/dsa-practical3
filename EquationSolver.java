@@ -34,22 +34,30 @@ public class EquationSolver {
     private static DSAQueue parseInfixToPostfix(String equation) {
         DSAStack stackOp = new DSAStack();
         CircularQueue cirQPostfix = new CircularQueue();
+
+        String[] terms = parseTerm(equation);
         int index = 0;
 
-        while(equation.length() > 0) {
+        while(index < terms.length) {
 
-            String[] term = parseTerm(equation);
-            if (term[index].equals("(")) {
-                stackOp.push(term[index]);
-            } else if (term[index].equals(")")) {
+            String term = terms[index];
+
+            if (term.equals("(")) {
+                stackOp.push(term);
+            } else if (term.equals(")")) {
                 while(!stackOp.top().equals("(")) {
                     cirQPostfix.enqueue(stackOp.top());
                 }
                 stackOp.pop();
-            } else if (term[index].equals('+') || term[index].equals('-') || term[index].equals('*') || term[index].equals('/')) {
+            } else if (term.equals('+')
+                    || term.equals('-')
+                    || term.equals('*')
+                    || term.equals('/')) {
                 char c1 = (char) stackOp.top();
                 char c2 = (char) stackOp.pop();
-                while(!stackOp.isEmpty() && !stackOp.top().equals('(') && (presedenceOf(c1) >= presedenceOf(c2))) {
+                while(!stackOp.isEmpty()
+                    && !stackOp.top().equals('(')
+                    && (presedenceOf(c1) >= presedenceOf(c2))) {
                     cirQPostfix.enqueue(stackOp.pop());
                 }
                 stackOp.push(term);
