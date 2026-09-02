@@ -18,7 +18,7 @@ public class EquationSolver {
 
         double result = solve(term);
         System.out.println(result);
-        
+
         sc.close();
     }
 
@@ -27,8 +27,7 @@ public class EquationSolver {
 
         DSAQueue postfix = parseInfixToPostfix(equation);
         result = evaluatePostfix(postfix);
-
-        System.out.println(postfix);
+        
         return result;
     }
 
@@ -47,12 +46,12 @@ public class EquationSolver {
                 stackOp.push(term);
             } else if (term.equals(")")) {
                 while(!stackOp.top().equals("(")) {
-                    cirQPostfix.enqueue(stackOp.top());
+                    cirQPostfix.enqueue(stackOp.pop());
                 }
                 stackOp.pop();
-            } else if (term.equals('+') || term.equals('-') || term.equals('*') || term.equals('/')) {
+            } else if (term.equals("+") || term.equals("-") || term.equals("*") || term.equals("/")) {
                 char currentOp = term.charAt(0);
-                while(!stackOp.isEmpty() && !stackOp.top().equals('(') && (presedenceOf(((String) stackOp.top()).charAt(0)) >= presedenceOf(currentOp))) {
+                while(!stackOp.isEmpty() && !stackOp.top().equals("(") && (presedenceOf(((String) stackOp.top()).charAt(0)) >= presedenceOf(currentOp))) {
                     cirQPostfix.enqueue(stackOp.pop());
                 }
                 stackOp.push(term);
@@ -69,10 +68,9 @@ public class EquationSolver {
         
     }
  
-    // https://stackoverflow.com/questions/27808112/java-splitting-with-math-expression
     private static String[] parseTerm(String equation) {
-        equation =  equation.replaceAll("\\s", "");
-        String[] split = equation.split("(?<=[\\d.])(?=[^\\d.])|(?<=[^\\d.])(?=[\\d.])");
+
+        String[] split = equation.split(" ");
         return split;
     }
 

@@ -66,7 +66,7 @@ class ShuffleQueue extends DSAQueue {
     @Override
     public Object dequeue() {
         Object frontVal = peek();
-        for(int i = 1; i < count-1 ; i++) {
+        for(int i = 0; i < count-1 ; i++) {
             queue[i] = queue[i+1];
         }
         count--;
