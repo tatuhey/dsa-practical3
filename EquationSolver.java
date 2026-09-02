@@ -16,8 +16,9 @@ public class EquationSolver {
         System.out.println("Insert the equation below.");
         term = sc.nextLine();
 
-        solve(term);
-
+        double result = solve(term);
+        System.out.println(result);
+        
         sc.close();
     }
 
