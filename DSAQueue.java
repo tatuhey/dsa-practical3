@@ -37,7 +37,7 @@ public abstract class DSAQueue {
     // PDI lecture06
 
     public abstract void enqueue(Object value);
-    public abstract Object dequeue(Object value);
+    public abstract Object dequeue();
     public abstract Object peek();
 }
 
@@ -64,7 +64,7 @@ class ShuffleQueue extends DSAQueue {
     }
 
     @Override
-    public Object dequeue(Object value) {
+    public Object dequeue() {
         Object frontVal = peek();
         for(int i = 1; i < count-1 ; i++) {
             queue[i] = queue[i+1];
