@@ -38,25 +38,25 @@ public class EquationSolver {
         String[] terms = parseTerm(equation);
         int index = 0;
 
-        while(index < terms.length) {
+        while(index < terms.length) { // because length of array is +1 than the index, so we use < instead of <= as it length starts a from 1 and index starts from 0
 
             String term = terms[index];
 
             if (term.equals("(")) {
-                stackOp.push(term);
+                stackOp.push(term); // push the opening bracket to the stack
             } else if (term.equals(")")) {
-                while(!stackOp.top().equals("(")) {
+                while(!stackOp.top().equals("(")) { // when the top of the stack is not an opening bracket, we pop the operators and enqueue them to the postfix queue
                     cirQPostfix.enqueue(stackOp.pop());
                 }
-                stackOp.pop();
+                stackOp.pop(); // after all else, we pop the opening bracket from the stack
             } else if (term.equals("+") || term.equals("-") || term.equals("*") || term.equals("/")) {
-                char currentOp = term.charAt(0);
-                while(!stackOp.isEmpty() && !stackOp.top().equals("(") && (presedenceOf(((String) stackOp.top()).charAt(0)) >= presedenceOf(currentOp))) {
+                char currentOp = term.charAt(0); // convert string to char because presedenceOf() takes char as input
+                while(!stackOp.isEmpty() && !stackOp.top().equals("(") && (presedenceOf(((String) stackOp.top()).charAt(0)) >= presedenceOf(currentOp))) { // left side of presedenceOf has to be char so we convert the top of stack to string then to char
                     cirQPostfix.enqueue(stackOp.pop());
                 }
                 stackOp.push(term);
             } else {
-                cirQPostfix.enqueue(Double.parseDouble(term));
+                cirQPostfix.enqueue(Double.parseDouble(term)); // convert string to double because now it should only have numbers
             }
             index++;
         }
@@ -96,7 +96,6 @@ public class EquationSolver {
         return (Double) evalStack.pop();
     }
 
-    // https://www.geeksforgeeks.org/java/java-program-to-convert-infix-expression-to-postfix-expression/
     private static int presedenceOf(char theOp) {
         switch(theOp) {
             case '+':

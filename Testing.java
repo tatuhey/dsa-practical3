@@ -17,13 +17,13 @@ public class Testing {
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
-                    stackTesting();
+                    stackTesting(sc);
                     break;
                 case 2:
-                    shufflequeueTesting();
+                    shufflequeueTesting(sc);
                     break;
                 case 3:
-                    circularqueueTesting();
+                    circularqueueTesting(sc);
                     break;
                 case 0:
                     System.out.println("Exiting the testing");
@@ -36,8 +36,8 @@ public class Testing {
         sc.close();
     }
 
-    public static void stackTesting(){
-        Scanner sc = new Scanner(System.in);
+    public static void stackTesting(Scanner sc){
+    
         int cap = 0;
         
         System.out.println("Input capacity of stack");
@@ -55,13 +55,13 @@ public class Testing {
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
-                    System.out.println(stackTest.getCount() + "\n");
+                    System.out.println("getCount(): " + stackTest.getCount() + "\n");
                     break;
                 case 2:
-                    System.out.println(stackTest.isEmpty()+ "\n");
+                    System.out.println("isEmpty(): " + stackTest.isEmpty() + "\n");
                     break;
                 case 3: 
-                    System.out.println(stackTest.isFull()+ "\n");
+                    System.out.println("isFull(): " + stackTest.isFull() + "\n");
                     break;
                 case 4:
                     System.out.println("Enter integer to push");
@@ -69,7 +69,7 @@ public class Testing {
                     stackTest.push(selection);
                     break;
                 case 5:
-                    System.out.println(stackTest.pop()+ "\n");
+                    System.out.println("pop(): " + stackTest.pop() + "\n");
                     break;
                 case 0:
                     System.out.println("exiting...");
@@ -79,11 +79,10 @@ public class Testing {
             }
         }
 
-        sc.close();
+        
     }
 
-    public static void shufflequeueTesting() {
-        Scanner sc = new Scanner(System.in);
+    public static void shufflequeueTesting(Scanner sc) {
         int cap = 0;
         
         System.out.println("Input capacity of stack");
@@ -101,13 +100,13 @@ public class Testing {
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
-                    System.out.println(shuffleqTest.getCount() + "\n");
+                    System.out.println("getCount(): " + shuffleqTest.getCount() + "\n");
                     break;
                 case 2:
-                    System.out.println(shuffleqTest.isEmpty() + "\n");
+                    System.out.println("isEmpty(): " + shuffleqTest.isEmpty() + "\n");
                     break;
                 case 3:
-                    System.out.println(shuffleqTest.isFull() + "\n");
+                    System.out.println("isFull(): " + shuffleqTest.isFull() + "\n");
                     break;
                 case 4:
                     System.out.println("Enter integer to enqueue");
@@ -115,7 +114,7 @@ public class Testing {
                     shuffleqTest.enqueue(selection);
                     break;
                 case 5:
-                    System.out.println(shuffleqTest.dequeue() + "\n");
+                    System.out.println("dequeue(): " + shuffleqTest.dequeue() + "\n");
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -125,10 +124,8 @@ public class Testing {
             }
         }
 
-        sc.close();
     }
-    public static void circularqueueTesting() {
-        Scanner sc = new Scanner(System.in);
+    public static void circularqueueTesting(Scanner sc) {
         int cap = 0;
         
         System.out.println("Input capacity of stack");
@@ -146,13 +143,13 @@ public class Testing {
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
-                    System.out.println(circularqTest.getCount() + "\n");
+                    System.out.println("getCount(): " + circularqTest.getCount() + "\n");
                     break;
                 case 2:
-                    System.out.println(circularqTest.isEmpty() + "\n");
+                    System.out.println("isEmpty(): " + circularqTest.isEmpty() + "\n");
                     break;
                 case 3:
-                    System.out.println(circularqTest.isFull() + "\n");
+                    System.out.println("isFull(): " + circularqTest.isFull() + "\n");
                     break;
                 case 4:
                     System.out.println("Enter integer to enqueue");
@@ -160,7 +157,7 @@ public class Testing {
                     circularqTest.enqueue(selection);
                     break;
                 case 5:
-                    System.out.println(circularqTest.dequeue() + "\n");
+                    System.out.println("dequeue(): " + circularqTest.dequeue() + "\n");
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -169,8 +166,6 @@ public class Testing {
                     System.out.println("Wrong selection");
             }
         }
-
-        sc.close();
     }
 
 }
