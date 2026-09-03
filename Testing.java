@@ -1,3 +1,8 @@
+/*
+made by hand aka bit bad
+03/09/2026
+*/
+
 import java.util.*;
 
 public class Testing {
