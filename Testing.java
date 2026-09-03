@@ -51,7 +51,7 @@ public class Testing {
 
         int selection = 100000;
         while(selection != 0) {
-            System.out.println("Stack\n1. getcount\n2. isempty\n3. isfull\n4. push\n5. pop\n0. exit\n");
+            System.out.println("Stack\n1. getcount\n2. isempty\n3. isfull\n4. push\n5. pop\n6. top\n7. pop all\n8. push all (based on prior cap value)\n0. exit\n");
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
@@ -71,6 +71,20 @@ public class Testing {
                 case 5:
                     System.out.println("pop(): " + stackTest.pop() + "\n");
                     break;
+                case 6:
+                    System.out.println("top(): " + stackTest.top() + "\n");
+                    break;
+                case 7:
+                    for(int i = 0; i < cap; i++) {
+                        System.out.println("pop(): " + stackTest.pop());
+                    }
+                    break;
+                case 8:
+                    for(int i = 0; i < cap; i++) {
+                        int randomNum = (int) (Math.random() * 101);
+                        stackTest.push(randomNum);
+                    }
+                    break;
                 case 0:
                     System.out.println("exiting...");
                     break;
@@ -78,8 +92,6 @@ public class Testing {
                     System.out.println("Wrong selection.");
             }
         }
-
-        
     }
 
     public static void shufflequeueTesting(Scanner sc) {
@@ -96,7 +108,7 @@ public class Testing {
 
         int selection = 100000;
         while(selection != 0) {
-            System.out.println("Shuffle Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n0. Exit");
+            System.out.println("Shuffle Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n6. peek\n7. dequeue all\n8. enqueue random (based on prior cap value)\n0. Exit");
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
@@ -115,6 +127,20 @@ public class Testing {
                     break;
                 case 5:
                     System.out.println("dequeue(): " + shuffleqTest.dequeue() + "\n");
+                    break;
+                case 6:
+                    System.out.println("peek(): " + shuffleqTest.peek() + "\n");
+                    break;
+                case 7:
+                    for(int i = 0; i < cap; i++) {
+                        System.out.println("dequeue(): " + shuffleqTest.dequeue());
+                    }
+                    break;
+                case 8:
+                    for(int i = 0; i < cap; i++) {
+                        int randomNum = (int) (Math.random() * 101);
+                        shuffleqTest.enqueue(randomNum);
+                    }
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -139,7 +165,7 @@ public class Testing {
 
         int selection = 100000;
         while(selection != 0) {
-            System.out.println("Circular Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n0. Exit");
+            System.out.println("Circular Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n6. peek\n7. dequeue all\n8. enqueue random\n0. Exit");
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
@@ -158,6 +184,20 @@ public class Testing {
                     break;
                 case 5:
                     System.out.println("dequeue(): " + circularqTest.dequeue() + "\n");
+                    break;
+                case 6:
+                    System.out.println("peek(): " + circularqTest.peek() + "\n");
+                    break;
+                case 7:
+                    for(int i = 0; i < cap; i++) {
+                        System.out.println("dequeue(): " + circularqTest.dequeue());
+                    }
+                    break;
+                case 8:
+                    for(int i = 0; i < cap; i++) {
+                        int randomNum = (int) (Math.random() * 101);
+                        circularqTest.enqueue(randomNum);
+                    }
                     break;
                 case 0:
                     System.out.println("Exiting...");
