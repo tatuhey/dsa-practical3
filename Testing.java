@@ -83,7 +83,7 @@ public class Testing {
         
         System.out.println("Input capacity of stack");
         cap = sc.nextInt();
-        ShuffleQueue shuffleqTest = new ShuffleQueue(cap);
+        DSAQueue shuffleqTest = new ShuffleQueue(cap);
 
         for(int i = 0; i < cap; i++) {
             int randomNum = (int) (Math.random() * 101);
@@ -92,7 +92,7 @@ public class Testing {
 
         int selection = 100000;
         while(selection != 0) {
-            System.out.println("Shuffle Queue\n1. getcount\n2. isempty\n3. isfull\n3. enqueue\n4. dequeue\n5. peek");
+            System.out.println("Shuffle Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n0. Exit");
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
@@ -105,7 +105,7 @@ public class Testing {
                     System.out.println(shuffleqTest.isFull() + "\n");
                     break;
                 case 4:
-                    System.out.println("Enter integer to push");
+                    System.out.println("Enter integer to enqueue");
                     selection = sc.nextInt();
                     shuffleqTest.enqueue(selection);
                     break;
@@ -128,7 +128,7 @@ public class Testing {
         
         System.out.println("Input capacity of stack");
         cap = sc.nextInt();
-        CircularQueue circularqTest = new CircularQueue(cap);
+        DSAQueue circularqTest = new CircularQueue(cap);
 
         for(int i = 0; i < cap; i++) {
             int randomNum = (int) (Math.random() * 101);
@@ -137,7 +137,7 @@ public class Testing {
 
         int selection = 100000;
         while(selection != 0) {
-            System.out.println("Circular Queue\n1. getcount\n2. isempty\n3. isfull\n3. enqueue\n4. dequeue\n5. peek");
+            System.out.println("Circular Queue\n1. getcount\n2. isempty\n3. isfull\n4. enqueue\n5. dequeue\n0. Exit");
             selection = sc.nextInt();
             switch(selection) {
                 case 1:
@@ -150,7 +150,7 @@ public class Testing {
                     System.out.println(circularqTest.isFull() + "\n");
                     break;
                 case 4:
-                    System.out.println("Enter integer to push");
+                    System.out.println("Enter integer to enqueue");
                     selection = sc.nextInt();
                     circularqTest.enqueue(selection);
                     break;
